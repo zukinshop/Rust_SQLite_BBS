@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <form method="POST">
+            <textarea name="report" rows="3"></textarea>
+            <button type="submit">投稿</button>
+        </form>
+
+        <div>
+            <ul>
+                {% for i in data %}
+                    <li class="Output">{{ i }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+
+
+        <script>
+            // ページ読み込み時にリストアイテム内のテキストに改行を適用する処理
+            window.onload = function() {
+                const listItemElements = document.querySelectorAll(".Output");
+                listItemElements.forEach(function(element) {
+                    const textWithLineBreaks = element.textContent;
+                    const textWithBrTags = textWithLineBreaks.replace(/\n/g, "<br>");
+                    element.innerHTML = textWithBrTags;
+                });
+            };
+        </script>
+
+    </body>
+</html>
